@@ -14,8 +14,20 @@ _comp_options+=(globdots)   # Include hidden files.
 unset LSCOLORS
 export CLICOLOR=1
 export CLICOLOR_FORCE=1
-[[ /usr/local/bin/kubectl ]] && source <(kubectl completion zsh)
 
+# Use Updated coreutils
+ARCH=$(/usr/bin/arch)
+if [ $ARCH == "i386" ]
+then
+  export PATH="/usr/local/opt/coreutils/libexec/gnubin:${PATH}"
+  export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:${MANPATH}"
+elif [ $ARCH == "arm64" ]
+then
+  export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:${PATH}"
+  export MANPATH="/opt/homebrew/opt/coreutils/libexec/gnuman:${MANPATH}"
+fi
+
+[[ /usr/local/bin/kubectl ]] && source <(kubectl completion zsh)
 DEFAULT_KUBE_CONTEXTS="$HOME/.kube/config"
 if test -f "${DEFAULT_KUBE_CONTEXTS}"
 then
