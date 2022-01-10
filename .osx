@@ -41,16 +41,6 @@ defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
 # Trackpad, mouse, keyboard, Bluetooth accessories, and input                 #
 ###############################################################################
 
-# Trackpad: Haptic feedback (light, silent clicking)
-defaults write com.apple.AppleMultitouchTrackpad FirstClickThreshold -int 0
-defaults write com.apple.AppleMultitouchTrackpad ActuationStrength -int 0
-
-# Trackpad: map bottom right corner to right-click (requires restart!)
-defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadRightClick -bool true
-defaults write com.apple.AppleMultitouchTrackpad TrackpadRightClick -bool true
-defaults write com.apple.AppleMultitouchTrackpad TrackpadCornerSecondaryClick -int 2
-defaults write NSGlobalDomain ContextMenuGesture -int 1
-
 # Set a blazingly fast keyboard repeat rate, and make it happen more quickly.
 defaults write NSGlobalDomain InitialKeyRepeat -int 20
 defaults write NSGlobalDomain KeyRepeat -int 1
@@ -80,11 +70,11 @@ defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/Desk
 # Show icons for hard drives, servers, and removable media on the desktop
 defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool true
 defaults write com.apple.finder ShowHardDrivesOnDesktop -bool true
-defaults write com.apple.finder ShowMountedServersOnDesktop -bool true
+defaults write com.apple.finder ShowMountedServersOnDesktop -bool false
 defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true
 
 # Finder: show hidden files by default
-# defaults write com.apple.finder AppleShowAllFiles -bool true
+defaults write com.apple.finder AppleShowAllFiles -bool true
 
 # Finder: show all filename extensions
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true
@@ -150,4 +140,3 @@ defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebK
 
 # Add a context menu item for showing the Web Inspector in web views
 defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
-
